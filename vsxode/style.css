@@ -1,0 +1,91 @@
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 背景容器（替代body背景，解决fixed兼容性） */
+.bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('image/xuan.jpg');
+    background-size: cover; /* 覆盖整个屏幕，自动适配 */
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+body {
+    font-family: "微软雅黑", sans-serif;
+    background-color: #f0f0f0; /* 备用背景色 */
+    overflow-x: hidden; /* 禁止横向滚动 */
+    min-height: 100vh;
+}
+
+.content-main {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* 大屏默认内边距 */
+}
+
+/* 全局根字体（使用rem单位适配） */
+html {
+    font-size: 16px; /* 基准值，媒体查询中动态调整 */
+}
+
+h1 {
+    color: red;
+    font-size: 1.75rem; /* 28px */
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+h2, h3 {
+    font-size: 1.5625rem; /* 25px */
+    margin-bottom: 10px;
+    color: aqua;
+    line-height: 1.5; /* 增加行高提升可读性 */
+}
+
+.name {
+    font-size: 3rem; /* 48px */
+    margin-top: 20px;
+    line-height: 1.1;
+}
+
+/* 手机端适配（<=768px） */
+@media (max-width: 768px) {
+    html { font-size: 14px; } /* 根字体缩小，整体等比缩放 */
+    
+    .content-main {
+        padding: 15px; /* 减少内边距 */
+    }
+    
+    .name {
+        font-size: 2.5rem; /* 35px */
+    }
+}
+
+/* 小屏手机适配（<=480px） */
+@media (max-width: 480px) {
+    html { font-size: 12px; } /* 进一步缩小 */
+    
+    .content-main {
+        padding: 10px; /* 最小内边距 */
+    }
+    
+    .name {
+        font-size: 2rem; /* 24px */
+    }
+}
