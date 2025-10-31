@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>轩生日快乐</title>
+    <style>
+        /* 重置默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url('image/xuan.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center center;
+            font-family: "微软雅黑", sans-serif;
+            overflow: hidden;
+        }
+        #fireworkCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        main.content-main {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            pointer-events: none;
+        }
+        h1 {
+            color: red;
+            font-size: 28px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        h2, h3 {
+            font-size: 25px;
+            margin-bottom: 10px;
+            color: aqua;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            line-height: 1.6;
+        }
+        h3 {
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.2rem; }
+            h3 { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="fireworkCanvas"></canvas>
+    
+    <main class="content-main">
+        <h1>祝轩轩生日快乐!</h1>
+        <h2>
+            先恭喜你又长大了一岁，希望在新的一年里，<br>
+            希望你能被好运眷顾，健康平安，财运亨通，<br>
+            希望你在明年的高考中能取得最好成绩如愿以偿，<br>
+            希望你岁岁无忧，年年有我，友谊长存，天长地久。
+        </h2>
+        <h3>----木杉</h3>
+    </main>
