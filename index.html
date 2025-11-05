@@ -5,71 +5,114 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>轩生日快乐</title>
     <style>
-        /* 重置默认样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        .bg-container {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: url('image/xuan.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center center;
+            background-size: cover; background-position: center; background-repeat: no-repeat;
+            z-index: -1;
+        }
+        
+        .bg-container::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.1); /* 保持背景提亮效果 */
+        }
+        
+        body {
             font-family: "微软雅黑", sans-serif;
-            overflow: hidden;
+            background-color: #f0f0f0;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
-        #fireworkCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        main.content-main {
-            position: relative;
-            z-index: 2;
+        
+        .content-main {
+            position: relative; z-index: 1;
             color: white;
-            padding: 20px;
             text-align: center;
-            pointer-events: none;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 40px 20px;
+            width: 100%;
         }
+        
+        html { font-size: 15px; } /* 根字体从14px上调至15px，奠定增大基础 */
+        
+        h1, h2, h3, .name {
+            text-shadow: 
+                0 1px 2px rgba(0,0,0,0.8),
+                0 0 10px rgba(0,0,0,0.5); /* 保留阴影确保可读性 */
+        }
+        
         h1 {
             color: red;
-            font-size: 28px;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-size: 1.65rem; /* 原1.5rem，增大一号 */
+            margin-bottom: 12px;
+            line-height: 1.2;
         }
+        
         h2, h3 {
-            font-size: 25px;
-            margin-bottom: 10px;
+            font-size: 1.4rem; /* 原1.25rem，增大一号 */
+            margin-bottom: 8px;
             color: aqua;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-            line-height: 1.6;
+            line-height: 1.5;
         }
-        h3 {
-            font-style: italic;
-            margin-top: 30px;
+        
+        .name {
+            font-size: 2.5rem; /* 原2.2rem，增大一号 */
+            margin-top: 15px;
+            line-height: 1.1;
         }
-
+        
+        /* 文字渐入动画 */
+        .content-main > * {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards;
+        }
+        
+        h1 { animation-delay: 0.3s; }
+        h2 { animation-delay: 0.6s; }
+        .name { animation-delay: 0.9s; }
+        h3 { animation-delay: 1.2s; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式适配（同步增大） */
         @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.2rem; }
-            h3 { font-size: 1rem; }
+            html { font-size: 13px; }
+            .content-main { padding: 30px 15px; }
+            .name { font-size: 2.1rem; }
+        }
+        
+        @media (max-width: 480px) {
+            html { font-size: 11px; }
+            .content-main { padding: 20px 10px; }
+            .name { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-    <canvas id="fireworkCanvas"></canvas>
+    <div class="bg-container"></div>
     
     <main class="content-main">
         <h1>祝轩轩生日快乐!</h1>
         <h2>
-            先恭喜你又长大了一岁，希望在新的一年里，<br>
+            先恭喜你又长大了一岁，在新的一年里，<br>
             希望你能被好运眷顾，健康平安，财运亨通，<br>
             希望你在明年的高考中能取得最好成绩如愿以偿，<br>
             希望你岁岁无忧，年年有我，友谊长存，天长地久。
         </h2>
+        <div class="name">轩轩</div>
         <h3>----木杉</h3>
     </main>
+</body>
+</html>
